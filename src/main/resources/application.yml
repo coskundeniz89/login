@@ -1,0 +1,20 @@
+liquibase:
+  enabled: false
+
+server:
+  port: 10000
+  contextPath: /login
+  ssl:
+    enabled: true
+    key-store: classpath:keystore/thekeystore.jks
+    key-store-password: changeit
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+

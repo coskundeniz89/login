@@ -1,0 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.1.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'login'
+}
+
+apply from: "https://raw.githubusercontent.com/mental-soft/gradle-config/master/global-config.gradle"
+apply from: "https://raw.githubusercontent.com/mental-soft/gradle-config/master/dependencies.gradle"
+
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+}
