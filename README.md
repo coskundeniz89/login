@@ -13,7 +13,7 @@ Cas için Rest servis sağlar.
 -e DB_USER=dbuser -e DB_PASS=12345 sameersbn/postgresql</code>
 
 ### Run authentication before login
-<code>docker run -it --name cont_authentication -p 10020:10020 
+<code>docker run -itd --name cont_authentication -p 10020:10020 
 --link cont_postgresql mental/authentication</code>
 
 # Build

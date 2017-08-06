@@ -2,15 +2,12 @@ package com.teammental.login.controller;
 
 import com.teammental.login.dto.LoginResult;
 import com.teammental.mebuilder.GenericBuilder;
-import org.apache.tomcat.util.codec.binary.StringUtils;
-import org.postgresql.util.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -28,28 +25,17 @@ public class LoginController {
    * @return LoginResult
    */
   @PostMapping("/")
-  public ResponseEntity<LoginResult> login(
-      @RequestHeader(value = "Authorization") String authorization) {
+  public ResponseEntity<LoginResult> login() {
 
-    LOGGER.info("********* Giriş başladı.");
-    LOGGER.info("********* Authorization Header: " + authorization);
-
-    StringUtils.newStringUtf8(Base64.decode(authorization.replace("Basic ", "")));
-
-    SecurityContextHolder.getContext().getAuthentication();
+    String userId = SecurityContextHolder.getContext().getAuthentication().getName();
+    LOGGER.info("********* Giriş başarılı. UserId: " + userId);
 
     LoginResult loginResult = GenericBuilder.of(LoginResult::new)
-        .with(LoginResult::setId, "coskun")
-        .with(LoginResult::setClassName, "org.apereo.cas.authentication.principal.SimplePrincipal")
+        .with(LoginResult::setId, userId)
         .build();
-
     loginResult.getAttributes().put("ROLE", "TEST");
 
-    ResponseEntity<LoginResult> result = new ResponseEntity<>(loginResult, HttpStatus.OK);
-
-    LOGGER.info("********* Giriş bitti");
-    return result;
+    return new ResponseEntity<>(loginResult, HttpStatus.OK);
   }
-
 
 }

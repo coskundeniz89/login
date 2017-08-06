@@ -20,4 +20,5 @@ apply from: "https://raw.githubusercontent.com/mental-soft/gradle-config/master/
 
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+    compile group: 'org.springframework.security', name: 'spring-security-test'
 }

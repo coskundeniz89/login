@@ -11,8 +11,6 @@ import java.util.Map;
  */
 public class LoginResult {
 
-  @JsonProperty("@class")
-  private String className;
   private String id;
   private final Map<String, Object> attributes;
 
@@ -37,11 +35,9 @@ public class LoginResult {
     return "ClassLoginResult [id = " + id + ", attributes = " + attributes + "]";
   }
 
+  @JsonProperty("@class")
   public String getClassName() {
-    return className;
+    return "org.apereo.cas.authentication.principal.SimplePrincipal";
   }
 
-  public void setClassName(String className) {
-    this.className = className;
-  }
 }
