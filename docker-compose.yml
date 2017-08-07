@@ -8,10 +8,10 @@ services:
     links:
       - cont_postgresql
     depends_on:
-      - web_authentication
+      - cont_authentication
     environment:
       SPRING_PROFILES_ACTIVE: default
-  web_authentication:
+  cont_authentication:
     image: mental/authentication
     ports:
       - "10020:10020"
