@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mental-soft/login.svg?branch=master)](https://travis-ci.org/mental-soft/login)
+
 # Mental Login
 Cas için Rest servis sağlar.
 
